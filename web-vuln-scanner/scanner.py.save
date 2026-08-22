@@ -1,0 +1,4 @@
+import requests
+
+SECURITY_HEADERS = [
+   'Content-Security-P
