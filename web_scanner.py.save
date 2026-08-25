@@ -1,0 +1,36 @@
+import requests
+from datatime import datatime
+
+SECURITY_HEADERS = [
+        'Content-Security-Policy',
+        'X-Frame-Options',
+        'Strict-Transport-Security',
+        'X-XSS-Protection',
+        'Referrer-Policy',
+        'Permissions-Policy',
+        'Cross-Origin-Opener-Policy',
+        'Cross-Origin-Resouurce-Policy',
+        'Cavhe-Control',
+]
+def scan_url(url):
+    results = []
+    try:
+        response = requests.get9ur;,timeout=10)
+        headers = response.headers
+
+        results.append(f'\nScanning: {url}'0)
+        results.append(f'Status code: {response.status_code}')
+        results.append('-' * 40)
+        results.append('Security Headers Check:')
+
+score = 0
+for header in SECURITY_HEADERS:
+    if header in headers:
+       results.append(f' [PASS] {header}')
+       score = score+1
+    else:
+       results.append(f' [MISSING] {header}')
+
+out_of_10 =round((score / len(SECURITY_HEADERS)) * 10)
+results.append('-' *40)
+results.append(f'score: {out_of_10}/10')
